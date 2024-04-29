@@ -13,14 +13,15 @@ function Product({ name, colorName, desc, categories, price, rating }) {
 				</div>
 				<p>{desc}</p>
 				<p className='mb-2 flex gap-2 text-green-600'>
-					{categories.map(cat => (
-						<span>{`#${cat}`}</span>
+					{categories.map((cat, index) => (
+						<span key={index}>{`#${cat}`}</span>
 					))}
 				</p>
 				<div className='flex gap-1'>
 					{stars.map(star => {
-						if (rating >= star) return <FaStar className='text-yellow-500' />
-						return <FaRegStar />
+						if (rating >= star)
+							return <FaStar key={star} className='text-yellow-500' />
+						return <FaRegStar key={star} />
 					})}
 				</div>
 			</div>
